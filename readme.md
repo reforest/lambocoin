@@ -17,12 +17,25 @@ A Basic Cryptocurrency Built with Lotion based on awesome Tendermint. (For demo 
     </a>
 </p>
 
-## Usage
+## Installation
 ```command
-$ git clone https://github.com/reforest/lambocoin.git
-$ npm i
-$ npm start
-// => port 3000
+$ npm i --save lambocoin
+```
+
+## Use it in command line
+```command
+$ cd node_modules/lambocoin
+// run it
+$ npm start       // <- default to 3000
+// or
+$ npm start 3333  // <- define port to 3333
+```
+
+## Use it in Node
+```javascript
+import lambocoin from 'lambocoin';
+const App = new lambocoin();
+App.listen(3303);
 ```
 
 ## Endpoints

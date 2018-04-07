@@ -1,4 +1,4 @@
 import lambocoin from './app';
 
 const App = new lambocoin();
-App.listen(3303);
+App.listen(process.argv[2]|| 3000);
