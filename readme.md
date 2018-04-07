@@ -17,6 +17,23 @@ A Basic Cryptocurrency Built with Lotion based on awesome Tendermint. (For demo 
     </a>
 </p>
 
+## Usage
+```command
+$ git clone https://github.com/reforest/lambocoin.git
+$ npm i
+$ npm start
+// => port 3000
+```
+
+## Endpoints
+```command
+<!-- GET -->
+$ curl http://localhost:3000/state
+<!-- POST -->
+$ curl http://localhost:3000/txs -d '{}'
+```
+
+
 
 ## Author
 
