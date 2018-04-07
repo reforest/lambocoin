@@ -26,16 +26,18 @@
   "dependencies": {
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "coins": "^2.4.0",
+    "coins": "git://github.com/keppel/coins.git#judd/wallet-and-docs",
     "cross-env": "^5.1.4",
+    "crypto": "^1.0.1",
     "lotion": "^0.1.17"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-stage-3": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-ES2017": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-watch": "^2.0.7",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
