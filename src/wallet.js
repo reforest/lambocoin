@@ -1,16 +1,19 @@
 import lotion from 'lotion';
 import coins from 'coins';
-import { randomBytes } from 'crypto';
 
 import config from './config';
 
 const { APP_GCI } = config;
 
-let priv = randomBytes(32);
+let priv = Buffer.alloc(32);
+for(let i = 0; i<priv.length; i++){
+  priv[i] = i
+}
 let walletObj = {};
+let wallet;
 lotion.connect(APP_GCI)
 .then((client)=>{
-  let wallet = coins.wallet(priv, client);
+  wallet = coins.wallet(priv, client);
   walletObj.address = wallet.address;
   return wallet.getBalance();
 })

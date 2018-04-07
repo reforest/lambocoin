@@ -9,6 +9,7 @@
     "start:wallet": "cross-env NODE_ENV=production node ./dist/wallet.js",
     "test": "eslint --fix .",
     "wallet": "babel-watch ./src/wallet.js",
+    "wallets": "babel-watch ./src/wallets/index.js",
     "node": "babel-watch ./src/node.js",
     "build": "babel -d ./dist ./src -s",
     "build:node": "babel ./dist/node.js ./src/node.js"
