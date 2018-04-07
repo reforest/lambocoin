@@ -11,7 +11,7 @@ init()
     process.exitCode = 1
   })
 
-async function init () {
+function init () {
   const argv = minimist(process.argv.slice(2), {
     boolean: [
       'open'

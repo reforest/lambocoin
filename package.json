@@ -6,6 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./dist/app.js",
     "test": "eslint --fix .",
+    "cmd": "./src/cmd.js",
     "build": "babel -d ./dist ./src -s",
     "dev": "babel-watch ./src/app.js",
     "release": "git pull && npm run test && npm run build && git add . && git commit -m 'deploy' && git push origin master && npm version patch"
@@ -17,7 +18,11 @@
     "type": "git",
     "url": "git+https://github.com/reforest/lambocoin.git"
   },
-  "author": "Amazingandyyy <amazingandyyy@gmail.com> (Andy Chen)",
+  "author": {
+    "name": "Amazingandyyy",
+    "email": "amazingandyyy@gmail.com",
+    "url": "https://amazingandyyy.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reforest/lambocoin/issues"
