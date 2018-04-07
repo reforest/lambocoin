@@ -1,12 +1,10 @@
 { 
   "presets": [
     "es2017",
-    "env",
-    "stage-3"
+    "env"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-async-generator-functions"
+    "transform-object-rest-spread"
   ],
   "ignore": [
     "node_modules",

@@ -2,17 +2,12 @@
   "name": "basecoin",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/app.js",
   "scripts": {
-    "start": "npm rm start:wallet && npm run start:node",
-    "start:node": "cross-env NODE_ENV=production node ./dist/node.js",
-    "start:wallet": "cross-env NODE_ENV=production node ./dist/wallet.js",
+    "start": "cross-env NODE_ENV=production node ./dist/app.js",
     "test": "eslint --fix .",
-    "wallet": "babel-watch ./src/wallet.js",
-    "wallets": "babel-watch ./src/wallets/index.js",
-    "node": "babel-watch ./src/node.js",
     "build": "babel -d ./dist ./src -s",
-    "build:node": "babel ./dist/node.js ./src/node.js"
+    "dev": "babel-watch ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -27,8 +22,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "coins": "git://github.com/keppel/coins.git#judd/wallet-and-docs",
     "cross-env": "^5.1.4",
     "crypto": "^1.0.1",
     "dotenv": "^5.0.1",
@@ -44,7 +37,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2017": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
     "babel-watch": "^2.0.7",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
