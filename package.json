@@ -1,6 +1,6 @@
 {
   "name": "lambocoin",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Basic Cryptocurrency Built with Lotion based on awesome Tendermint.",
   "main": "./dist/app.js",
   "scripts": {
