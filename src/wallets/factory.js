@@ -1,18 +1,15 @@
 import lotion from 'lotion';
 import coins from 'coins';
+import GetPrivateKey from './getPrivateKey';
 
 import config from '../config';
 const { APP_GCI } = config;
 
 class WalletFactory {
   constructor(_index){
-    this.priv = Buffer.alloc(32);
+    this.priv = GetPrivateKey(_index);
     this.walletObj = {};
     this.walletObj.index = _index;
-
-    for(let i = 0; i < this.priv.length; i++){
-      this.priv[i] = i + _index;
-    }
     let wallet;
     lotion.connect(APP_GCI)
     .then((client)=>{

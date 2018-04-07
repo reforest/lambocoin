@@ -30,13 +30,10 @@
     "no-param-reassign": 0,
     "func-names": 0,
     "no-plusplus": 0,
-    "class-methods-use-this": 0,
-    "async-await/space-after-async": 2,
-    "async-await/space-after-await": 2
+    "class-methods-use-this": 0
   },
   "plugins": [
     "node",
-    "jest",
-    "async-await"
+    "jest"
   ]
 }
