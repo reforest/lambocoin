@@ -8,7 +8,7 @@
     "test": "eslint --fix .",
     "build": "babel -d ./dist ./src -s",
     "dev": "babel-watch ./src/app.js",
-    "release": "git pull && npm run test && npm run build && git add . && git commit -m 'deploy' && npm run clean && git push origin master && npm version patch"
+    "release": "git pull && npm run test && npm run build && git add . && git commit -m 'deploy' && git push origin master && npm version patch"
   },
   "bin": {
     "lambocoin": "./dist/app.js"
