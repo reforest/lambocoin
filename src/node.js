@@ -4,12 +4,7 @@ import coins from 'coins';
 const PORT = process.argv[2] || 3000;
 const app = lotion({ initialState: {} });
 
-app.use(coins({
-  name: 'basecoin',
-  initialBalances: {
-    andy: 100000
-  }
-}));
+app.use();
 
 // console.log(Object.keys(app));
 

@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./dist/index.js",
+    "start": "npm rm start:wallet && npm run start:node",
+    "start:node": "cross-env NODE_ENV=production node ./dist/node.js",
+    "start:wallet": "cross-env NODE_ENV=production node ./dist/wallet.js",
     "test": "eslint --fix .",
-    "dev": "babel-watch ./src/wallet.js",
+    "wallet": "babel-watch ./src/wallet.js",
     "node": "babel-watch ./src/node.js",
-    "build": "babel -d ./dist ./src -s"
+    "build": "babel -d ./dist ./src -s",
+    "build:node": "babel ./dist/node.js ./src/node.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "coins": "^2.4.0",
+    "cross-env": "^5.1.4",
     "lotion": "^0.1.17"
   },
   "devDependencies": {
