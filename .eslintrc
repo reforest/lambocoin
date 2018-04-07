@@ -6,12 +6,11 @@
     "jest/globals": true
   },
   "parserOptions": {
-    "sourceType": "module"
+    "ecmaVersion": 2017
   },
   "extends": [
     "standard",
-    "eslint:recommended",
-    "airbnb"
+    "eslint:recommended"
   ],
   "rules": {
     "import/prefer-default-export": 0,
@@ -31,10 +30,13 @@
     "no-param-reassign": 0,
     "func-names": 0,
     "no-plusplus": 0,
-    "class-methods-use-this": 0
+    "class-methods-use-this": 0,
+    "async-await/space-after-async": 2,
+    "async-await/space-after-await": 2
   },
   "plugins": [
     "node",
-    "jest"
+    "jest",
+    "async-await"
   ]
 }
