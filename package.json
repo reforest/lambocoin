@@ -1,7 +1,7 @@
 {
-  "name": "basecoin",
-  "version": "0.0.1",
-  "description": "",
+  "name": "lambocoin",
+  "version": "0.0.2",
+  "description": "A Basic Cryptocurrency Built with Lotion based on awesome Tendermint.",
   "main": "./dist/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./dist/app.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reforest/basecoin.git"
+    "url": "git+https://github.com/reforest/lambocoin.git"
   },
   "author": "Amazingandyyy <amazingandyyy@gmail.com> (Andy Chen)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/reforest/basecoin/issues"
+    "url": "https://github.com/reforest/lambocoin/issues"
   },
-  "homepage": "https://github.com/reforest/basecoin#readme",
+  "homepage": "https://github.com/reforest/lambocoin#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
