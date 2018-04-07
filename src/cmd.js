@@ -1,15 +1,11 @@
 #!/usr/bin/env node
+
 import minimist from 'minimist';
 import { stripIndent } from 'common-tags';
 
 import App from './app';
 
-
 init()
-  .catch(function (err) {
-    console.error(err.stack)
-    process.exitCode = 1
-  })
 
 function init () {
   const argv = minimist(process.argv.slice(2), {
@@ -39,9 +35,7 @@ function runHelp () {
   const message = stripIndent`
     lambocoin - 🙌 A Basic Cryptocurrency Built with Lotion based on awesome Tendermint.✨
     Usage:
-        lambocoin <flags> [CWD]
-        If CWD is omitted, then the current working directory is used. The "nearest"
-        package.json / node_modules folder will be used.
+        lambocoin <flags>
     Flags:
         -v, --version   Show current version
         -h, --help      Show usage information
