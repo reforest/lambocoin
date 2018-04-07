@@ -1,9 +1,7 @@
 import lotion from 'lotion';
 import handler from './handler';
 
-const PORT = process.argv[2] || 3000;
-
-function App() {
+function App(PORT) {
   const app = lotion({ initialState: {} });
 
   app.use(handler);

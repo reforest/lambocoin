@@ -11,7 +11,7 @@
     "release": "git pull && npm run test && npm run build && git add . && git commit -m 'deploy' && git push origin master && npm version patch"
   },
   "bin": {
-    "lambocoin": "./dist/app.js"
+    "lambocoin": "./dist/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
+    "common-tags": "^1.7.2",
     "cross-env": "^5.1.4",
     "crypto": "^1.0.1",
     "dotenv": "^5.0.1",
     "lotion": "^0.1.17",
+    "minimist": "^1.2.0",
     "path": "^0.12.7",
     "secp256k1": "^3.5.0",
     "sha.js": "^2.4.11",
