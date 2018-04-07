@@ -18,7 +18,6 @@ A Basic Cryptocurrency Built with Lotion based on awesome Tendermint. (For demo 
 </p>
 
 
-
 ## Author
 
 [reforest (Andy Chen)](https://github.com/reforest)

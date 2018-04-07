@@ -1,13 +1,17 @@
 {
   "name": "lambocoin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Basic Cryptocurrency Built with Lotion based on awesome Tendermint.",
   "main": "./dist/app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./dist/app.js",
     "test": "eslint --fix .",
     "build": "babel -d ./dist ./src -s",
-    "dev": "babel-watch ./src/app.js"
+    "dev": "babel-watch ./src/app.js",
+    "release": "git pull && npm run test && npm run build && git add . && git commit -m 'deploy' && npm run clean && git push origin master && npm version patch"
+  },
+  "bin": {
+    "lambocoin": "./dist/app.js"
   },
   "repository": {
     "type": "git",
