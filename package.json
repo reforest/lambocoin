@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/reforest/basecoin#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "coins": "git://github.com/keppel/coins.git#judd/wallet-and-docs",
@@ -32,7 +33,10 @@
     "crypto": "^1.0.1",
     "dotenv": "^5.0.1",
     "lotion": "^0.1.17",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "secp256k1": "^3.5.0",
+    "sha.js": "^2.4.11",
+    "varstruct": "^6.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,0 +1,13 @@
+{
+  "name": "coin",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "node": "babel-watch ./node.js",
+    "client": "babel-watch ./client.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amazingandyyy <amazingandyyy@gmail.com> (Andy Chen)",
+  "license": "MIT"
+}
