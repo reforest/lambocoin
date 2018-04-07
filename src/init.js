@@ -1,3 +1,4 @@
-import App from './app';
+import lambocoin from './app';
 
-App();
+const App = new lambocoin();
+App.listen(3303);
