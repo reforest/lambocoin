@@ -29,7 +29,9 @@
     "coins": "git://github.com/keppel/coins.git#judd/wallet-and-docs",
     "cross-env": "^5.1.4",
     "crypto": "^1.0.1",
-    "lotion": "^0.1.17"
+    "dotenv": "^5.0.1",
+    "lotion": "^0.1.17",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
