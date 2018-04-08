@@ -1,9 +1,17 @@
 import lotion from 'lotion';
 import handler from './handler';
+import genesis from './genesis';
 
 class App {
   constructor() {
-    this.app = lotion({ initialState: {} });
+    this.app = lotion({ 
+      devMode: true,
+      initialState: {
+        balances: {
+          ...genesis
+        }
+      }
+    });
     console.log('\x1b[33m[lambocoin]\t initialized...\x1b[0m');
   }
   listen(_port) {

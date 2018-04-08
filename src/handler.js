@@ -4,6 +4,7 @@ import createHash from 'sha.js';
 import TxStruct from './txStruct';
 
 export default function handler(state, rawTx) {
+  console.log('before', state)
   let tx = deserializeTx(rawTx)
   if (!verifyTx(tx)) {
     return
@@ -33,6 +34,7 @@ export default function handler(state, rawTx) {
   state.balances[senderAddress] = senderBalance
   state.balances[receiverAddress] = receiverBalance
   state.nonces[senderAddress] = (state.nonces[senderAddress] || 0) + 1
+  console.log('after', state)
 }
 
 function hashTx(tx) {
