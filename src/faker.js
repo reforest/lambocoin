@@ -1,3 +1,5 @@
+import {trasactionWithCeledon, donateTo} from 'celadon';
+
 const fs = require('fs');
 const path = require('path');
 function uuid() {
@@ -12,7 +14,7 @@ function uuid() {
 //   console.log(uuid())
 // }
 
-const users = [
+let users = [
   '343d8c09edb7d464fa3a8324b46a84eb0234bfe08379367f097f035088723abe0f',
   'a93ab8c2c047aa78e71bb39ead17b1becb9d6846988f5441644d0afbd0f18d085c',
   '76f08f620778303ccbf9316a3b346caffb4827694959865b4d43ed694bc5562b2f',
@@ -69,9 +71,10 @@ const users = [
   '5bcae3abe65a99a9c2e460f2e20ae0db1261a3242aac342f4e17a888ac5c9189e0',
   'bf7054125c5edef405304fcae329c81013011371ccd9df95454add749b1d3478c9',
   '9e9578743e468e66c2eaf489000b81ba9a26c62ce40e3aa246c3fb409f3666a1f4',
-  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f', // userOne
-  'celadon_wallet' // special wallet
+  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f' // userOne
 ]
+
+users=[...users, ...specialWallets]
 
 function randomNum(){
   return Math.floor(Math.random()*users.length);
@@ -86,38 +89,20 @@ users.forEach(u=>{
   state.balances[u] = Math.floor(Math.random()*100*Math.random()*100);
 })
 
-for(let i=0; i<3000;i++){
+for(let i=0; i<5000;i++){
+  console.log(i)
   let userOne = users[randomNum()];
   let userTwo = users[randomNum()];
-  console.log(userOne, userTwo);
   if(userOne !== userTwo){
-    let userOneBalance = state.balances[userOne];
-    let userTwoBalance = state.balances[userTwo];
-    if((userOneBalance<=10)||userTwoBalance<=10) break;
-
-    let amount = Math.random()*((Math.min(userOneBalance, userTwoBalance))/2.4);
-    let donations = amount*0.015;
-    amount -= donations;
-
-    if(amount>userOneBalance) break;
-    userOneBalance-=amount;
-    userTwoBalance+=amount;
-    state.balances[userOne] = userOneBalance
-    state.balances[userTwo] = userTwoBalance
-    state.transactions.push({
-      timestamp: Date.now() - (Math.floor(Math.random()*i*300)+100),
+    trasactionWithCeledon(state, {
       from: userOne,
-      to: {
-        address: userTwo,
-        amount
-      },
-      donations: {
-        address: 'celadon_wallet',
-        amount: donations
-      }
+      to: userTwo,
+      org: donateTo(),
+      feePortion: 0.018
     })
   }
 }
 
 const output = JSON.stringify(state, 0, 1);
-fs.writeFileSync(path.resolve(__dirname, './data.js'), output)
+fs.writeFileSync(path.resolve(__dirname, './data.json'), output)
+console.log('done')
