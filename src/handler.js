@@ -8,10 +8,9 @@ export default function handler(state, tx) {
     from: senderAddress,
     to: receiverAddress,
     org: donateTo(),
-    feePortion: 0.018,
+    feePortion: tx.data.feePortion || 0.01,
     amount: tx.data.amount
   })
-  // console.log('after', state)
 }
 
 // function hashTx(tx) {
