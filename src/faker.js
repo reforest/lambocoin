@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const path = require('path');
 function uuid() {
   return 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const r = Math.random() * 16 | 0;
@@ -39,7 +39,7 @@ const users = [
   'c808fc5832afb9775da3e921e75e8c477a24da7e6b425243ca9025a697b0b59a46',
   'e4b795edb0efb9e1bc1b4a82b61f0e6d8804d3cf0fe1159e3c5f68fb6fb62379a6',
   '2039287df9227b3b3d9b5babe33f05ed92387f905a54f70accc9a313ad30688edc',
-    '56b1fd2ea8db5d778f001a65bd9a0c4b8d9373dc06afdcaeecd6160cce94378443',
+  '56b1fd2ea8db5d778f001a65bd9a0c4b8d9373dc06afdcaeecd6160cce94378443',
   '7253de95375855edf4f40a634414493d859ef6bd22283978fce2efdddef7fd157c',
   '52255e7126d4b05c9e805b0754bde660e02ea5d8421f9099910d0fbe55c6083099',
   '0af29e45581a05fa9b67935044603a1ac264fcdc93994160450493d31bd1c6b49b',
@@ -69,11 +69,12 @@ const users = [
   '5bcae3abe65a99a9c2e460f2e20ae0db1261a3242aac342f4e17a888ac5c9189e0',
   'bf7054125c5edef405304fcae329c81013011371ccd9df95454add749b1d3478c9',
   '9e9578743e468e66c2eaf489000b81ba9a26c62ce40e3aa246c3fb409f3666a1f4',
-  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f'
+  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f', // userOne
+  'celadon_wallet' // special wallet
 ]
 
 function randomNum(){
-  return Math.floor(Math.random()*users.length)
+  return Math.floor(Math.random()*users.length);
 }
 
 let state = {
@@ -88,24 +89,35 @@ users.forEach(u=>{
 for(let i=0; i<3000;i++){
   let userOne = users[randomNum()];
   let userTwo = users[randomNum()];
+  console.log(userOne, userTwo);
   if(userOne !== userTwo){
     let userOneBalance = state.balances[userOne];
     let userTwoBalance = state.balances[userTwo];
     if((userOneBalance<=10)||userTwoBalance<=10) break;
 
-    let amount = Math.random()*(Math.min(userOneBalance, userTwoBalance))/2.4
+    let amount = Math.random()*((Math.min(userOneBalance, userTwoBalance))/2.4);
+    let donations = amount*0.015;
+    amount -= donations;
+
     if(amount>userOneBalance) break;
-    userOneBalance-=amount
-    userTwoBalance+=amount
+    userOneBalance-=amount;
+    userTwoBalance+=amount;
     state.balances[userOne] = userOneBalance
     state.balances[userTwo] = userTwoBalance
     state.transactions.push({
       timestamp: Date.now() - (Math.floor(Math.random()*i*300)+100),
       from: userOne,
-      to: userTwo,
-      amount
+      to: {
+        address: userTwo,
+        amount
+      },
+      donations: {
+        address: 'celadon_wallet',
+        amount: donations
+      }
     })
   }
 }
+
 const output = JSON.stringify(state, 0, 1);
-fs.writeFileSync('./data.js', output)
+fs.writeFileSync(path.resolve(__dirname, './data.js'), output)
