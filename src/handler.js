@@ -20,6 +20,7 @@ export default function handler(state, tx) {
 }
 
 function hashTx(tx) {
+  // we should do this in the handler, but it's buggy idk why it doesnt' work
   console.log(secp256k1.verify(hashTx(tx.data), tx.signature, tx.data.from));
   let txBytes = JSON.stringify(tx);
   let txHash = createHash('sha256')
