@@ -71,7 +71,8 @@ let users = [
   '5bcae3abe65a99a9c2e460f2e20ae0db1261a3242aac342f4e17a888ac5c9189e0',
   'bf7054125c5edef405304fcae329c81013011371ccd9df95454add749b1d3478c9',
   '9e9578743e468e66c2eaf489000b81ba9a26c62ce40e3aa246c3fb409f3666a1f4',
-  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f' // userOne
+  '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f', // userOne
+  '024d4b6cd1361032ca9bd2aeb9d900aa4d45d9ead80ac9423374c451a7254d0766' // userTwo
 ]
 
 users=[...users, ...NPOs]
@@ -85,11 +86,11 @@ let state = {
   transactions: []
 };
 
-let targets = ['celadon_wallet'];
+let targets = [...NPOs];
 
 users.forEach(u=>{
     if(u.length === 66 || targets.includes(u)) {
-      state.balances[u] = 100
+      state.balances[u] = 5000
     }
 })
 

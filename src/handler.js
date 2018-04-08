@@ -5,13 +5,15 @@ import { trasactionWithCeledon, donateTo } from 'celadon';
 export default function handler(state, tx) {  
   let senderAddress = tx.data.from.toString('hex')
   let receiverAddress = tx.data.to.toString('hex')
+  console.log(tx.data)
   trasactionWithCeledon(state, {
     from: senderAddress,
     to: receiverAddress,
     org: donateTo(),
-    feePortion: 0.018
+    feePortion: 0.018,
+    amount: tx.data.amount
   })
-  console.log('after', state)
+  // console.log('after', state)
 }
 
 // function hashTx(tx) {

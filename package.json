@@ -7,9 +7,10 @@
     "start": "cross-env NODE_ENV=production node ./dist/init.js",
     "test": "eslint --fix .",
     "cmd": "src/cmd.js",
-    "build": "babel -d ./dist ./src -s",
+    "build": "babel -d ./dist ./src -s && cp ./src/data.json ./dist/data.json",
     "dev": "babel-watch ./src/init.js",
-    "release": "git pull && npm run test && git add . && npm run build && git commit -m 'deploy' && git push origin master && npm version patch && npm publish"
+    "release": "git pull && npm run test && git add . && npm run build && git commit -m 'deploy' && git push origin master && npm version patch && npm publish",
+    "gen": "babel-watch ./src/faker.js"
   },
   "bin": "dist/cmd.js",
   "engines": {
@@ -31,7 +32,7 @@
   "homepage": "https://github.com/reforest/lambocoin#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "celadon": "0.0.7",
+    "celadon": "0.0.10",
     "common-tags": "^1.7.2",
     "cross-env": "^5.1.4",
     "crypto": "^1.0.1",
