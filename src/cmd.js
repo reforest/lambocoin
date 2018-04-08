@@ -48,5 +48,5 @@ function runVersion () {
 }
 
 function runApp(port=3000){
-  App();
+  new App();
 }

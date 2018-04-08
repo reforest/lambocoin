@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./dist/init.js",
     "test": "eslint --fix .",
-    "cmd": "src/cmd.js",
+    "cmd": "babel-node src/cmd.js",
     "build": "babel -d ./dist ./src -s",
     "dev": "babel-watch ./src/init.js",
     "release": "git pull && npm run test && git add . && npm run build && git commit -m 'deploy' && git push origin master && npm version patch && npm publish"
