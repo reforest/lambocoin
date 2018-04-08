@@ -94,7 +94,7 @@ users.forEach(u=>{
     }
 })
 
-for(let i=0; i<5000;i++){
+for(let i=0; i<1000;i++){
   console.log(i)
   let userOne = users[randomNum()];
   let userTwo = users[randomNum()];

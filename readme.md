@@ -46,8 +46,6 @@ $ curl http://localhost:3000/state
 $ curl http://localhost:3000/txs -d '{}'
 ```
 
-
-
 ## Author
 
 [reforest (Andy Chen)](https://github.com/reforest)

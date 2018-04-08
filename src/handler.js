@@ -1,8 +1,6 @@
 import { trasactionWithCeledon, donateTo } from 'celadon';
 
-// import secp256k1 from 'secp256k1';
-
-export default function handler(state, tx) {  
+export default function handler(state, tx) {
   let senderAddress = tx.data.from.toString('hex')
   let receiverAddress = tx.data.to.toString('hex')
   console.log(tx.data)
