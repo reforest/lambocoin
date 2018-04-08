@@ -31,6 +31,7 @@
   "homepage": "https://github.com/reforest/lambocoin#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "celadon": "0.0.7",
     "common-tags": "^1.7.2",
     "cross-env": "^5.1.4",
     "crypto": "^1.0.1",

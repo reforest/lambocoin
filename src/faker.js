@@ -1,4 +1,4 @@
-import {trasactionWithCeledon, donateTo} from 'celadon';
+import {trasactionWithCeledon, donateTo, NPOs} from 'celadon';
 
 const fs = require('fs');
 const path = require('path');
@@ -74,7 +74,7 @@ let users = [
   '031b84c5567b126440995d3ed5aaba0565d71e1834604819ff9c17f5e9d5dd078f' // userOne
 ]
 
-users=[...users, ...specialWallets]
+users=[...users, ...NPOs]
 
 function randomNum(){
   return Math.floor(Math.random()*users.length);
@@ -85,8 +85,12 @@ let state = {
   transactions: []
 };
 
+let targets = ['celadon_wallet'];
+
 users.forEach(u=>{
-  state.balances[u] = Math.floor(Math.random()*100*Math.random()*100);
+    if(u.length === 66 || targets.includes(u)) {
+      state.balances[u] = 100
+    }
 })
 
 for(let i=0; i<5000;i++){
@@ -97,7 +101,7 @@ for(let i=0; i<5000;i++){
     trasactionWithCeledon(state, {
       from: userOne,
       to: userTwo,
-      org: donateTo(),
+      org: donateTo(targets),
       feePortion: 0.018
     })
   }
