@@ -1,84 +1,29 @@
 import secp256k1 from 'secp256k1';
-import createHash from 'sha.js';
 
-import TxStruct from './txStruct';
-
-export default function handler(state, rawTx) {
-  console.log('before', state)
-  let tx = deserializeTx(rawTx)
-  if (!verifyTx(tx)) {
+export default function handler(state, tx) {  
+  let senderAddress = tx.data.from.toString('hex')
+  let receiverAddress = tx.data.to.toString('hex')
+  let amount = Number(tx.data.amount)
+  console.log(typeof state.balances[senderAddress])
+  let senderBalance = state.balances[senderAddress] || 100
+  let receiverBalance = state.balances[rece
+    iverAddress] || 100
+  if(senderAddress === receiverAddress || tx.data.amount > senderBalance) {
     return
   }
-
-  let senderAddress = tx.senderAddress.toString('hex')
-  let receiverAddress = tx.receiverAddress.toString('hex')
-
-  let senderBalance = state.balances[senderAddress] || 0
-  let receiverBalance = state.balances[receiverAddress] || 0
-
-  if(senderAddress === receiverAddress) {
-    return
-  }
-  if (!Number.isInteger(tx.amount)) {
-    return
-  }
-  if (tx.amount > senderBalance) {
-    return
-  }
-  if (tx.nonce !== (state.nonces[senderAddress] || 0)) {
-    return
-  }
-  senderBalance -= tx.amount
-  receiverBalance += tx.amount
+  senderBalance -= amount
+  receiverBalance += amount
 
   state.balances[senderAddress] = senderBalance
   state.balances[receiverAddress] = receiverBalance
-  state.nonces[senderAddress] = (state.nonces[senderAddress] || 0) + 1
   console.log('after', state)
 }
 
 function hashTx(tx) {
-  let txBytes = TxStruct.encode({
-    amount: tx.amount,
-    senderPubKey: tx.senderPubKey,
-    senderAddress: tx.senderAddress,
-    nonce: tx.nonce,
-    receiverAddress: tx.receiverAddress
-  })
+  console.log(secp256k1.verify(hashTx(tx.data), tx.signature, tx.data.from));
+  let txBytes = JSON.stringify(tx);
   let txHash = createHash('sha256')
-    .update(txBytes)
-    .digest()
-
-  return txHash
-}
-
-function verifyTx(tx) {
-  if (
-    deriveAddress(tx.senderPubKey).toString('hex') !==
-    tx.senderAddress.toString('hex')
-  ) {
-    return false
-  }
-  let txHash = hashTx(tx)
-  return secp256k1.verify(txHash, tx.signature, tx.senderPubKey)
-}
-
-function deserializeTx(tx) {
-  let deserialized = tx
-  ;[
-    'senderPubKey',
-    'senderAddress',
-    'receiverAddress',
-    'signature'
-  ].forEach(key => {
-    deserialized[key] = Buffer.from(deserialized[key], 'base64')
-  })
-
-  return deserialized
-}
-
-function deriveAddress(pubKey) {
-  return createHash('sha256')
-    .update(pubKey)
-    .digest()
+      .update(txBytes)
+      .digest();
+  return txHash;
 }
