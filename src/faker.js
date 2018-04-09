@@ -94,19 +94,19 @@ users.forEach(u=>{
     }
 })
 
-for(let i=0; i<1000;i++){
-  console.log(i)
-  let userOne = users[randomNum()];
-  let userTwo = users[randomNum()];
-  if(userOne !== userTwo){
-    trasactionWithCeledon(state, {
-      from: userOne,
-      to: userTwo,
-      org: donateTo(targets),
-      feePortion: 0.018
-    })
-  }
-}
+// for(let i=0; i<1000;i++){
+//   console.log(i)
+//   let userOne = users[randomNum()];
+//   let userTwo = users[randomNum()];
+//   if(userOne !== userTwo){
+//     trasactionWithCeledon(state, {
+//       from: userOne,
+//       to: userTwo,
+//       org: donateTo(targets),
+//       feePortion: 0.018
+//     })
+//   }
+// }
 
 const output = JSON.stringify(state, 0, 1);
 fs.writeFileSync(path.resolve(__dirname, './data.json'), output)
