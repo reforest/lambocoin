@@ -1,5 +1,6 @@
 import lotion from 'lotion';
-import handler from './handler';
+// import handler from './handler';
+import { handler as CeladonHandler } from 'celadon';
 import data from './data.json';
 
 class App {
@@ -14,7 +15,7 @@ class App {
   }
   listen(_port) {
     return new Promise((resolve, reject)=>{
-      this.app.use(handler);
+      this.app.use(CeladonHandler);
       this.app.listen(_port).then(() => {
         console.log(`\x1b[32m[lambocoin]\t available on PORT ${_port}\x1b[0m`);
         resolve(true)
