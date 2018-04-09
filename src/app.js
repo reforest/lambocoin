@@ -1,6 +1,5 @@
 import lotion from 'lotion';
 import handler from './handler';
-// import genesis from './genesis';
 import data from './data.json';
 
 class App {

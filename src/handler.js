@@ -1,9 +1,9 @@
 import { trasactionWithCeledon, donateTo } from 'celadon';
 
 export default function handler(state, tx) {
+  console.log(tx);
   let senderAddress = tx.data.from.toString('hex')
   let receiverAddress = tx.data.to.toString('hex')
-  console.log(tx.data)
   trasactionWithCeledon(state, {
     from: senderAddress,
     to: receiverAddress,

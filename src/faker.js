@@ -90,7 +90,7 @@ let targets = [...NPOs];
 
 users.forEach(u=>{
     if(u.length === 66 || targets.includes(u)) {
-      state.balances[u] = 5000
+      state.balances[u] = 1000
     }
 })
 
